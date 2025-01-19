@@ -3,7 +3,7 @@
 
 ## Affine and convex sets
 
-Suppose $x_1 \neq x_2$ are two points in $\mathbb{R}^n$, then points of the form $y = \theta x_1 + (1-\theta)x_2$ where $\theta \in \R$ form the $\textit{line}$ passing through $x_1$ and $x_2$. Values of the parameter $\theta$ between $0$ and $1$ correspond to the (closed) $\textit{line segment}$ between $x_1$ and $x_2$. 
+Suppose $x_1 \neq x_2$ are two points in $\mathbb{R}^n$, then points of the form $y = \theta x_1 + (1-\theta)x_2$ where $\theta \in \mathbb{R}$ form the $\textit{line}$ passing through $x_1$ and $x_2$. Values of the parameter $\theta$ between $0$ and $1$ correspond to the (closed) $\textit{line segment}$ between $x_1$ and $x_2$. 
 
 Expressing $y$ in the form $y=x_2 + \theta(x_1 - x_2)$ gives the interpretation that $y$ is the sum of the $\textit{base point} \: x_2$ and the direction $x_1 - x_2$ scaled by the parameter $\theta$. 
 
