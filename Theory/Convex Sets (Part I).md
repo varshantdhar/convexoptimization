@@ -1,5 +1,5 @@
 # Chapter 2
-# Convex Sets
+# Convex Sets (Part I)
 
 ## Affine and convex sets
 
@@ -78,3 +78,104 @@ A ray is convex because any convex combination of two points on the ray lies on 
 A subspace is closed under linear combinations, and thus, by definition, it is affine. A subspace is closed under scalar multiplication, including nonnegative scalars, making it a convex cone.
 
 ## Hyperplanes and halfspaces
+
+A $\textit{hyperplane}$ is a set of the form $\{ x | a^Tx = b \}$, where $a \in \mathbb{R}^n$, $a \neq 0$ and $b \in \mathbb{R}$ and can be interpreted as the set of points with a constant inner product to a given vector $a$, or as a hyperplane with $\textit{normal vector}$ $a$; the constant $b \in \mathbb{R}$ determines the offset of the hyperplane from the origin. This geometric interpretation can be understood by expressing the hyperplane in the form
+
+$$\{ x \: | \: a^T(x - x_0) = 0 \}$$
+
+where $x_0$ is any point in the hyperplane or any point that satisfies $a^Tx_0 = b$ and can be expressed as
+
+$$\{ x \: | \: a^T(x-x_0) = 0 \} = x_0 + a^{\perp} $$
+
+where $a^\perp$ denotes the orthogonal complement of $a$ or the set of all vectors orthogonal to it, $a^\perp =\{ v \: | \: a^Tv = 0 \}$. This shows that the hyperplane consists of an offset $x_0$, plus all vectors orthogonal to the (normal) vector $a$. A hyperplane divides $\mathbb{R}^n$ into two $\textit{halfspaces}$. A closed halfspace is a set of the form $\{x \: | \: a^Tx \leq b\}$ where $a \neq 0$. Halfspaces are convex, but not affine. 
+
+The halfspace can also be expressed as $\{ x \: | \: a^T(x - x_0) \leq 0 \}$ where $x_0$ is any point on the associated hyperplane i.e. satisfies $a^Tx_0 = b$ which suggests that the halfspace consists of $x_0$ plus any vector that makes an obtuse (or right) angle with the (outward normal) vector $a$. The boundary of the halfspace is the hyperplane $\{ x \: | \: a^Tx=b \}$. The set $\{x \: | \: a^Tx < b \}$ is the interior of the halfspace $\{x \: | \: a^Tx \leq b\}$ and is called an $\textit{open halfspace}$.
+
+## Euclidean balls and ellipsoids
+
+A Euclidean ball in $\mathbb{R}^n$ has the form
+
+$$ B (x_c, r) = \{ x \: | \: ||x-x_c||_2 \leq r\} = \{x \: | \: (x-x_c)^T(x-x_c) \leq r^2 \} = \{x_c + ru \: | \: ||u||_2 \leq 1 \} $$
+
+where $r > 0$ and $|| \cdot ||_2$ denotes the Euclidean norm i.e. $||u||_2 = (u^Tu)^{1/2}$. 
+
+A Euclidean ball is a convex set which can be proven using the homogeneity property and triangle inequality for the Euclidean norm with $||x_1 - x_c||_2 \leq r$, $||x_2 - x_c||_2 \leq r$ and $0 \leq \theta \leq 1$ then
+
+$$ ||\theta x_1 + (1-\theta) x_2 - x_c ||_2 = ||\theta (x_1 - x_c) + (1-\theta)(x_2-x_c)||_2 $$
+$$ \leq \theta ||x_1 - x_c||_2 + (1-\theta) ||x_2 - x_c||_2 \leq r$$
+
+$\textit{Ellipsoids}$ are a related family of convex sets which have the form
+
+$$ \Epsilon = \{x \: | \: (x-x_c)^TP^{-1}(x-x_c) \leq 1 \}$$
+
+where $P = P^T \succ 0$ i.e. P is symmetric and positive definite with vector $x_c$ at the center of the ellipsoid. The matrix $P$ determines how far the ellipsoid extends in every direction from $x_c$. The lengths of the semi-axes of $\Epsilon$ are given by $\sqrt{\lambda_i}$ where $\lambda_i$ are the eigenvalues of $P$. 
+
+A ball is an ellipsoid with $P = r^2I$ and another common representation of an ellipsoid is $\Epsilon = \{x_c + Au \: | \: ||u||_2 \leq 1 \}$ where $A$ is square and nonsingular. We can assume here that $A$ is symmetric and positive definite. When $A$ is symmetric positive semidefinite but singular, the set is called a $\textit{degenerate ellipsoid}$ where its affine dimension is equal to the rank of $A$. 
+
+## Norm balls and norm cones
+
+We can show that a $\textit{norm ball}$ of radius $r$ and center $x_c$ and given by $\{x \: | \: ||x-x_c|| \leq r \}$ is convex. The $\textit{norm cone}$ associated with the norm $|| \cdot ||$ is the set
+
+$$ C = \{(x, t) | ||x|| \leq t\} \subseteq \mathbb{R}^{n+1} $$
+
+which is a convex cone. 
+
+Example 2.3
+The $\textit{second-order cone}$ is the norm cone for the euclidean norm which is also called the $\textit{Lorentz cone}$ and it is defined by a quadratic inequality.
+
+## Polyhedra
+
+A $\textit{polyhedron}$ is defined as the solution set of a finite number of linear equalities and inequalities:
+
+$$ P = \{ x \: | \: a_j^Tx \leq b_j, j = 1,\cdots,m, c_j^Tx = d_j, j = 1,\cdots,p \} $$
+
+and is thus the intersection of a finite number of halfspaces and hyperplanes. Affine sets, rays, line segments and halfspaces are all polyhedra. We can also use the compact notation
+
+$$ P = \{ x \: | \: Ax \preceq b,  Cx = d\} $$
+
+where
+
+$$A = \begin{bmatrix} a_1^T \\ \vdots \\ a_m^T \end{bmatrix}, C = \begin{bmatrix} c_1^T \\ \vdots \\ c_p^T \end{bmatrix}$$
+
+## Simplexes
+
+$\textit{Simplexes}$ are another important family of polyhedra. Suppose the $k+1$ points $v_0, \cdots, v_k \in \mathbb{R}^n$ are $\textit{affinely independent}$, which means $v_1 - v_0, \cdots, v_k - v_0$ are linearly independent. The simplex determined by them is given by
+
+$$C = \text{conv}(v_0, \cdots, v_k) = \{\theta_0v_0 + \cdots + \theta_kv_k \: | \: \theta \succeq 0, 1^T\theta = 1 \}$$
+
+The affine dimension of the simplex is $k$, so it is sometimes referred to as a $k$-dimensional simplex in $\mathbb{R}^n$. We can define this as a polyhedron by looking at the definition, $x \in C$ if and only if $x = \theta_0v_0 + \theta_1v_1 + \cdots + \theta_kv_k$ for some $\theta \succeq 0$ with $1^T\theta = 1$. If we define $y = (\theta_1, \cdots, \theta_k)$ and 
+
+$$B = [v_1 - v_0 \cdots v_k - v_0 ] \in \mathbb{R}^{n \times k}$$
+
+we can say that $x \in C$ iff $x = v_0 + By$ for some $y \succeq 0$ with $1^Ty \leq 1$. The affine independence of $v_0, \cdots, v_k$ implies that $B$ has rank $k$. By definition, then, there exists a nonsingular matrix $A = (A_1, A_2) \in \mathbb{R}^{n \times n}$ such that
+
+$$AB = \begin{bmatrix} A_1 \\ A_2 \end{bmatrix} \: B = \begin{bmatrix} I \\ 0 \end{bmatrix}$$
+
+Multiplying $x$ on the left with $A$, we obtain $A_1 x = A_1 v_0 + y$ and $A_2 x = A_2 v_0$ which gives that $x \in C$ iff $A_2x = A_2v_0$ and the vector $y = A_1x - A_1v_0$ satisfies $y \succeq 0$ and $1^Ty \leq 1$
+
+Note, the convex hull of the finite set $\{ v_1, \cdots, v_k\}$ us
+
+$$\text{conv}\{v_1, \cdots, v_k\} = \{\theta_1v_1 + \cdots + \theta_kv_k\ | \theta \succeq 0, 1^T\theta = 1\}$$
+
+is a polyehedron and bounded by a set of linear equalities and inequalities. 
+
+Consider the unit ball in $l_{\infty}$-norm in $\mathbb{R}^n$
+
+$$ C = \{x \: | \: |x_i| \leq 1, i = 1, \cdots, n\}$$
+The set $C$ can be described with $2n$ linear inequalities. We require $2^n$ vectors to describe it in the convec hull as $C = \text{conv}\{v_1,\cdots,v_{2^n}\}$ where $v_1,\cdots,v_{2^n}$ are the $2^n$ vectors all of whose components are $1$ or $-1$. 
+
+## The positive semidefinite cone
+
+Let $S^n$ denote the set of symmetric $n \times n$ matrices
+
+$$S^n = \{X \in \mathbb{R}^{n \times n} | X = X^T\} $$
+
+which is a vector space with dimension $n(n+1)/2$. The notation $S^n_{+}$ to denote the set of symmetric positive semidefinite matrices and $S^n_{++}$ to denote the set of symmetric positive definite matrices
+
+$$S^n_{+} = \{ X \in S^n \: | \: X \succeq 0 \}, $$
+and
+$$S^n_{++} = \{ X \in S^n \: | \: X \succ 0 \} $$
+
+The set $S^n_{+}$ is a convex cone which can be seen directly from the definition of positive semidefiniteness, for any $x \in \mathbb{R}^n$ and $\theta_1, \theta_2 \geq 0$ and $A, B \in S^n_{+}$ we have
+
+$$ x^T(\theta_1 A + \theta_2 B)x = \theta_1 x^T Ax + \theta_2 x^T Bx \geq 0 $$
